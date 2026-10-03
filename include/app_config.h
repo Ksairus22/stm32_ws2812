@@ -1,0 +1,48 @@
+#pragma once
+
+#include "stm32f1xx_hal.h"
+
+/* WS2812 hardware configuration. */
+#define WS2812_DATA_GPIO GPIOA
+#define WS2812_DATA_PIN GPIO_PIN_8
+#define WS2812_TIMER TIM1
+#define WS2812_TIMER_CHANNEL TIM_CHANNEL_1
+#define WS2812_DMA_CHANNEL DMA1_Channel2
+
+/* LED count is normally supplied by tools/build.cmd -LedCount N. */
+#ifndef APP_WS2812_LED_COUNT
+#define APP_WS2812_LED_COUNT 8
+#endif
+#define WS2812_LED_COUNT ((uint32_t)APP_WS2812_LED_COUNT)
+
+/* Animation settings are supplied by the generator application at build time. */
+#ifndef APP_EFFECT_BRIGHTNESS
+#define APP_EFFECT_BRIGHTNESS 64U
+#endif
+#ifndef APP_EFFECT_FRAME_INTERVAL_MS
+#define APP_EFFECT_FRAME_INTERVAL_MS 40U
+#endif
+#ifndef APP_EFFECT_TRANSITION_MS
+#define APP_EFFECT_TRANSITION_MS 250U
+#endif
+#ifndef APP_EFFECT_SATURATION
+#define APP_EFFECT_SATURATION 255U
+#endif
+#ifndef APP_EFFECT_TRAIL_LENGTH
+#define APP_EFFECT_TRAIL_LENGTH 8U
+#endif
+#ifndef APP_EFFECT_SEQUENCE
+#define APP_EFFECT_SEQUENCE 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+#endif
+#ifndef APP_EFFECT_DURATIONS_MS
+#define APP_EFFECT_DURATIONS_MS 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000
+#endif
+#define WS2812_MAX_BRIGHTNESS ((uint8_t)APP_EFFECT_BRIGHTNESS)
+#define EFFECT_FRAME_INTERVAL_MS ((uint32_t)APP_EFFECT_FRAME_INTERVAL_MS)
+#define EFFECT_TRANSITION_MS ((uint32_t)APP_EFFECT_TRANSITION_MS)
+#define EFFECT_SATURATION ((uint8_t)APP_EFFECT_SATURATION)
+#define EFFECT_TRAIL_LENGTH ((uint32_t)APP_EFFECT_TRAIL_LENGTH)
+
+/* USB Mass Storage geometry. */
+#define USB_DISK_BLOCK_SIZE 512U
+#define USB_DISK_BLOCKS 512U
